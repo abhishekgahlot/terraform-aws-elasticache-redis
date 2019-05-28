@@ -3,8 +3,8 @@ resource "aws_vpc" "default" {
   cidr_block           = "${var.vpc_cidr_block}"
   enable_dns_hostnames = true
 
-  tags {
-    "Name" = "${var.namespace}"
+  tags = {
+    Name = "${var.namespace}"
   }
 }
 
@@ -12,8 +12,8 @@ resource "aws_vpc" "default" {
 resource "aws_internet_gateway" "default" {
   vpc_id = "${aws_vpc.default.id}"
 
-  tags {
-    "Name" = "${var.namespace}"
+  tags = {
+    Name = "${var.namespace}"
   }
 }
 
@@ -35,7 +35,7 @@ resource "aws_subnet" "default" {
   cidr_block              = "${var.cidr_blocks[count.index]}"
   map_public_ip_on_launch = true
 
-  tags {
-    "Name" = "${var.namespace}"
+  tags = {
+    Name = "${var.namespace}"
   }
 }
